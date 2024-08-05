@@ -1,0 +1,240 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    ;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+i {
+    font-size: 14px;
+}
+a{
+    color: black;
+}
+@font-face {
+    font-family: "Poppins";
+    src: url("/font/poppins/poppins-regular-webfont.woff2") format("woff2"),
+        url("/font/poppins/poppins-regular-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "Poppins-bold";
+    src: url("/font/poppins/poppins-bold-webfont.woff2") format("woff2"),
+        url("/font/poppins/poppins-bold-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "Poppins-extrabold";
+    src: url("/font/poppins/poppins-extrabold-webfont.woff2") format("woff2"),
+        url("/font/poppins/poppins-extrabold-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "Poppins-light";
+    src: url("/font/poppins/poppins-light-webfont.woff2") format("woff2"),
+        url("/font/poppins/poppins-light-webfont.woff") format("woff"),
+}
+
+@font-face {
+    font-family: "Poppins-medium";
+    src: url("/font/poppins/poppins-medium-webfont.woff2") format("woff2"),
+        url("/font/poppins/poppins-medium-webfont.woff") format("woff"),
+}
+
+.wrapper {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1280px;
+}
+
+.border {
+    border-bottom: 1px solid rgb(175, 175, 175);
+}
+
+#navbar_top .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+}
+#navbar_top .container .top_left{
+    display: flex;
+    gap: 20px;
+}
+#navbar_top .container .top_left ul{
+    display: flex;
+    gap: 20px;
+}
+#navbar_top .container .top_right{
+    display: flex;
+    gap: 20px;
+}
+#navbar_top .container .top_right ul{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+#navbar_top .container .top_right ul li .user{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 2px;
+    cursor: pointer;
+}
+#navbar_top .container .top_right ul li .user img{
+    width: 100%;
+    display: block;
+}
+#navbar_top .container .top_right ul li .icon{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#navbar_top .container .top_right ul li .icon img{
+    width: 100%;
+    display: block;
+}
+#navbar_top .container .top_right ul li .cart{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+#navbar_top .container .top_right ul li .cart img{
+    width: 100%;
+    display: block;
+}
+
+/* Navbar section */
+#navBar .navbar {
+    display: flex;
+    padding: 16px 0;
+    align-items: center;
+    justify-content: space-between;
+}
+#navBar .logo {
+    flex: 0 1 auto; 
+}
+#navBar .nav-item {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin: 0 20px;
+}
+#navBar .search {
+    display: flex;
+    width: 100%;
+    border: 1px solid #dbdbdb;
+    border-radius: 4px;
+    margin-right: 10px;
+}
+#navBar .search-all {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    position: relative;
+    border-right: 1px solid #dbdbdb;
+    cursor: pointer;
+    gap: 5px;
+}
+#navBar .search-all .dropdown {
+    position: absolute;
+    background-color: #f0ebeb;
+    padding: 30px 30px;
+    z-index: 1;
+    top: 3.1rem;
+    left: 0;
+    display: none;
+}
+#navBar .search-all.active .dropdown {
+    display: flex;
+    flex-direction: column;
+}
+.search-all .dropdown.show {
+    display: flex;
+    flex-direction: column;
+}
+#navBar .search-all .dropdown ul li {
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 15px;
+    color: #616161;
+}
+#navBar .search-all .dropdown ul li:hover {
+    text-decoration: underline;
+    color: #000;
+}
+#navBar .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f9fafb;
+    flex: 1;
+}
+#navBar .search-input {
+    background-color: #f9fafb;
+    padding: 10px 5px;
+    border: none;
+    width: 100%;
+}
+#navBar .search-icon {
+    margin-left: 8px;
+}
+.mobile-search-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 20px;
+}
+#navBar .search-button {
+    padding: 12px 24px;
+    background-color: #1D4ED8;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+}
+#navBar .search-link {
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
+}
+#navBar .search-link a {
+    color: #323232;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+/* navbar bottom */
+#navbar_bot{
+    background-color: #f9fafb;
+    padding: 20px 0px;
+}
+#navbar_bot ul{
+    display: flex;
+    justify-content: space-between;
+}
+#navbar_bot ul .close-btn{
+    display: none;
+}
+#navbar_bot ul li{
+    font-size: 14px;
+    color: #5f5f5f;
+    font-weight: 600;
+    cursor: pointer;
+}
+#navbar_bot ul li a {
+    color: #5f5f5f;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png'%}" type="image/x-icon" />
+    <title>eBay</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+</head>
+<body>
+    <section id="navbar_top">
+        <div class="border">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="top_left">
+                        <div>
+                            <img src="{% static 'images/subLogo' %}.png" alt="eBay plus" />
+                        </div>
+                        <div class="left-list">
+                            <ul class='list-items'>
+                                <li><a href="#">eBay Deals</a></li>
+                                <li><a href="">Find a Store</a></li>
+                                <li><a href="">Help</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="top_right">
+                        <ul>
+                            <li><a href="#">Sell</a></li>
+                            <li><a href="">Watch List <i class="fa fa-angle-down"></i></a></li>
+                            <li>
+                                <div class="user" >
+                                    <img src="{% static 'images/user.jpg' %}" alt="User" />
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <div class="icon">
+                                    <img src="{% static 'images/Bell.svg' %}" alt="Notification Icon" />
+                                </div></a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <div class="cart">
+                                    <img src="{% static 'images/Cart.svg' %}" alt="Cart Icon" />
+                                </div></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- navbar -->
+    <section id="navBar">
+        <div class="border">
+            <div class="wrapper">
+                <div class='navbar'>
+                    <div class='logo'>
+                        <a href="{% url 'web:index' %}">
+                            <img src="{% static 'images/logo' %}.png" alt="Logo" />
+                        </a>
+                    </div>
+                    <div class='nav-item'>
+                        <div class='search'>
+                            <span class='search-all' id="category-selector" onclick="toggleDropdown()">All
+                                <i class="fa fa-angle-down"></i>
+                                <span class="dropdown">
+                                    <ul class="dropdown-list">
+                                        <li class="dropdown-item active" data-category="all">All</li>
+                                        <li class="dropdown-item" data-category="electronics">Electronics</li>
+                                        <li class="dropdown-item" data-category="motors">Motors</li>
+                                        <li class="dropdown-item" data-category="home-garden">Home & Garden</li>
+                                        <li class="dropdown-item" data-category="clothing-accessories">Clothing & Accessories</li>
+                                        <li class="dropdown-item" data-category="sports">Sports</li>
+                                        <li class="dropdown-item" data-category="health-beauty">Health & Beauty</li>
+                                        <li class="dropdown-item" data-category="toys">Toys</li>
+                                        <li class="dropdown-item" data-category="business-industrial">Business & Industrial</li>
+                                        <li class="dropdown-item" data-category="collectables">Collectables</li>
+                                        <li class="dropdown-item" data-category="deals-sales">Deals & Sales</li>
+                                    </ul>
+                                </span>
+                            </span>
+                            <div class='search-bar'>
+                                <span class='search-icon'>
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                                <input type="text" id="search-input" class="search-input"
+                                    placeholder='Search for anything' />
+                            </div>
+                        </div>
+                        <button type="button" class="search-button" onclick="performSearch()">Search</button>
+                    </div>
+                    <div class='search-link'>
+                        <a href="">Advanced</a>
+                    </div>
+                </div>
+    
+                <div id="products-container"></div>
+                <div id="no-results" style="display: none;">No items found.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- navbar bottom -->
+    <section id="navbar_bot">
+        <div class="wrapper">
+            <div class="hamburger" id="hamburger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="list" id="saved-list">
+                <li class="list-item close-btn" id="close-btn">✖</li>
+                <li class="list-item one" id="home"><a href="{% url 'web:index' %}" id="home">Home</a></li>
+                <li class="list-item two" id="counter">
+                    <i class="fa fa-heart" aria-hidden="true"></i>
+                    <!-- <span id="saved-counter">0</span> -->
+                    <a href="#">Saved</a>
+                </li>
+                <li class="list-item" data-category-slug="electronics">Electronics</li>
+                <li class="list-item" data-category-slug="motors">Motors</li>
+                <li class="list-item" data-category-slug="home-garden">Home & Garden</li>
+                <li class="list-item" data-category-slug="clothing-accessories">Clothing & Accessories</li>
+                <li class="list-item" data-category-slug="sports">Sports</li>
+                <li class="list-item" data-category-slug="health-beauty">Health & Beauty</li>
+                <li class="list-item" data-category-slug="toys">Toys</li>
+                <li class="list-item" data-category-slug="business-industrial">Business & Industrial</li>
+                <li class="list-item" data-category-slug="collectables">Collectables</li>
+                <li class="list-item" data-category-slug="deals-sales">Deals & Sales</li>
+            </ul>        
+        </div>
+    </section>
+    
+</body>
+</html>

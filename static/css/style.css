@@ -3,18 +3,12 @@
     padding: 0;
     text-decoration: none;
     outline: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
-    ;
 }
-
-ul,
-ol {
+ul,ol {
     list-style: none;
 }
-
 i {
     font-size: 14px;
 }
@@ -280,4 +274,105 @@ a{
     color: #000;
     background-color: white;
     border-radius: 24px;
+}
+
+/* recent section */
+#recent{
+    background-color: #f9fafb;
+    padding: 20px 0px 10px 0px;
+}
+.recent_top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.recent_top p{
+    color: #464646;
+    font-size: 14px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.recent_bot{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+.recent_row .img_cont .image{
+    width: 100%;
+}
+.recent_row .img_cont .image img{
+    border-radius: 10px;
+    width: 100%;
+    display: block;
+}
+.recent_row .text_cont h4{
+    font-size: 16px;
+    font-weight: 500;
+}
+.recent_row .text_cont h5{
+    font-size: 16px;
+    font-weight: 600;
+}
+/* footer section */
+#footer .footer-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+}
+#footer .footer-content {
+    display: flex;
+    font-size: 12px;
+    font-weight: normal;
+    color: #616161;
+    padding: 40px 0px 60px 0px;
+    justify-content: space-between;
+}
+#footer .footer-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+}
+#footer .footer-item {
+    font-size: 16px;
+    font-weight: 600;
+}
+#footer .copyright {
+    font-size: 14px;
+    color: #616161;
+}
+#footer .copyright-text {
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+}
+#footer .copyright-text i {
+    margin: 0 4px;
+}
+#footer .black {
+    color: #000;
+}
+#footer span {
+    font-weight: normal;
+    text-decoration: underline;
+}
+#footer strong {
+    text-decoration: none;
+}
+#footer-mini {
+    padding: 40px 0;
+}
+#footer-mini .mini-list {
+    display: flex;
+    gap: 20px;
+}
+#footer-mini .mini-list .mini-item {
+    color: #616161;
+    font-size: 12px;
+    font-weight: 400;
+}
+.footer_right .footer-list{
+    margin-bottom: 40px;
+}
+.footer_right .footer-list:last-child{
+    margin-bottom: 0px;
 }

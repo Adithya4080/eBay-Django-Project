@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png'%}" type="image/x-icon" />
+    <title>eBay</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet" />
+</head>
+<body>
+    <section id="navbar_top">
+        <div class="border">
+            <div class="wrapper">
+                <div class="container">
+                    <div class="top_left">
+                        <div>
+                            <img src="{% static 'images/subLogo' %}.png" alt="eBay plus" />
+                        </div>
+                        <div class="left-list">
+                            <ul class='list-items'>
+                                <li><a href="#">eBay Deals</a></li>
+                                <li><a href="">Find a Store</a></li>
+                                <li><a href="">Help</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="top_right">
+                        <ul>
+                            <li><a href="#">Sell</a></li>
+                            <li><a href="">Watch List <i class="fa fa-angle-down"></i></a></li>
+                            <li>
+                                <div class="user" >
+                                    <img src="{% static 'images/user.jpg' %}" alt="User" />
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <div class="icon">
+                                    <img src="{% static 'images/Bell.svg' %}" alt="Notification Icon" />
+                                </div></a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                <div class="cart">
+                                    <img src="{% static 'images/Cart.svg' %}" alt="Cart Icon" />
+                                </div></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- navbar -->
+    <section id="navBar">
+        <div class="border">
+            <div class="wrapper">
+                <div class='navbar'>
+                    <div class='logo'>
+                        <a href="{% url 'web:index' %}">
+                            <img src="{% static 'images/logo' %}.png" alt="Logo" />
+                        </a>
+                    </div>
+                    <div class='nav-item'>
+                        <div class='search'>
+                            <span class='search-all' id="category-selector" onclick="toggleDropdown()">All
+                                <i class="fa fa-angle-down"></i>
+                                <span class="dropdown">
+                                    <ul class="dropdown-list">
+                                        <li class="dropdown-item active" data-category="all">All</li>
+                                        <li class="dropdown-item" data-category="electronics">Electronics</li>
+                                        <li class="dropdown-item" data-category="motors">Motors</li>
+                                        <li class="dropdown-item" data-category="home-garden">Home & Garden</li>
+                                        <li class="dropdown-item" data-category="clothing-accessories">Clothing & Accessories</li>
+                                        <li class="dropdown-item" data-category="sports">Sports</li>
+                                        <li class="dropdown-item" data-category="health-beauty">Health & Beauty</li>
+                                        <li class="dropdown-item" data-category="toys">Toys</li>
+                                        <li class="dropdown-item" data-category="business-industrial">Business & Industrial</li>
+                                        <li class="dropdown-item" data-category="collectables">Collectables</li>
+                                        <li class="dropdown-item" data-category="deals-sales">Deals & Sales</li>
+                                    </ul>
+                                </span>
+                            </span>
+                            <div class='search-bar'>
+                                <span class='search-icon'>
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                                <input type="text" id="search-input" class="search-input"
+                                    placeholder='Search for anything' />
+                            </div>
+                        </div>
+                        <button type="button" class="search-button" onclick="performSearch()">Search</button>
+                    </div>
+                    <div class='search-link'>
+                        <a href="">Advanced</a>
+                    </div>
+                </div>
+    
+                <div id="products-container"></div>
+                <div id="no-results" style="display: none;">No items found.</div>
+            </div>
+        </div>
+    </section>
+    {% block content %}
+
+    {% endblock %}
+    
+    <!-- footer Section -->
+    <section id="footer">
+        <div class="wrapper">
+            <div class="footer-container">
+                {% block footer %}
+                <div class="footer-content">
+                    <ul class='footer-list'>
+                        <li class='footer-item'>Buy</li>
+                        <li><a href="#">eBay Deals</a></li>
+                        <li><a href="#">eBay Mobile</a></li>
+                        <li><a href="#">ebay for Charity</a></li>
+                        <li><a href="#">eBay Stores</a></li>
+                        <li><a href="#">Gift Finder</a></li>
+                        <li><a href="#">Holidays and Seasonal Occasions</a></li>
+                    </ul>
+                    <ul class='footer-list'>
+                        <li class='footer-item'>Sell</li>
+                        <li><a href="#">eBay Deals</a></li>
+                        <li><a href="#">eBay Mobile</a></li>
+                        <li><a href="#">ebay for Charity</a></li>
+                        <li><a href="#">eBay Stores</a></li>
+                        <li><a href="#">Gift Finder</a></li>
+                        <li><a href="#">Holidays and Seasonal Occasions</a></li>
+                    </ul>
+                    <ul class='footer-list'>
+                        <li class='footer-item'>Stay Connected</li>
+                        <li><a href="#">eBay Deals</a></li>
+                        <li><a href="#">eBay Mobile</a></li>
+                        <li><a href="#">ebay for Charity</a></li>
+                        <li><a href="#">eBay Stores</a></li>
+                        <li><a href="#">Gift Finder</a></li>
+                        <li><a href="#">Holidays and Seasonal Occasions</a></li>
+                    </ul>
+                    <ul class='footer-list'>
+                        <li class='footer-item'>About eBay</li>
+                        <li><a href="#">eBay Deals</a></li>
+                        <li><a href="#">eBay Mobile</a></li>
+                        <li><a href="#">ebay for Charity</a></li>
+                        <li><a href="#">eBay Stores</a></li>
+                        <li><a href="#">Gift Finder</a></li>
+                        <li><a href="#">Holidays and Seasonal Occasions</a></li>
+                    </ul>
+                    <div class="footer_right">
+                        <ul class="footer-list">
+                            <li class='footer-item '>Help</li>
+                            <li><a href="#">eBay Returns</a></li>
+                            <li><a href="#">eBay Money Back Guarantee</a></li>
+                        </ul>
+                        <ul class="footer-list">
+                            <li class='footer-item'>Community</li>
+                            <li><a href="#">Announcements</a></li>
+                            <li><a href="#">Discussion Forum</a></li>
+                            <li><a href="#">Answer Centre</a></li>
+                            <li><a href="#">Groups</a></li>
+                        </ul>
+                    </div>                    
+                </div>
+                {% endblock %}
+
+                <div class='copyright'>
+                    <h6 class='copyright-text'>
+                        Copright <i class="fa fa-copyright" aria-hidden="true"></i> 1995-2024 eBay Inc<strong
+                            class='black'>. All Rights Reserved. </strong>
+                        <span>User Agreement, Payment Terms of use, Cookies <strong>and</strong> AdChoice</span>
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{% static 'js/script.js'%}"></script>
+</body>
+</html>

@@ -4,52 +4,91 @@
 {% block content %}
 
     <!-- navbar bottom -->
-    <section id="navbar_bot">
-        <div class="wrapper">
-            <div class="hamburger" id="hamburger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <ul class="list" id="saved-list">
-                <li class="list-item close-btn" id="close-btn">✖</li>
-                <li class="list-item one" id="home"><a href="{% url 'web:index' %}" id="home">Home</a></li>
-                <li class="list-item two" id="counter">
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                    <!-- <span id="saved-counter">0</span> -->
-                    <a href="#">Saved</a>
-                </li>
-                <li class="list-item" data-category-slug="electronics">Electronics</li>
-                <li class="list-item" data-category-slug="motors">Motors</li>
-                <li class="list-item" data-category-slug="home-garden">Home & Garden</li>
-                <li class="list-item" data-category-slug="clothing-accessories">Clothing & Accessories</li>
-                <li class="list-item" data-category-slug="sports">Sports</li>
-                <li class="list-item" data-category-slug="health-beauty">Health & Beauty</li>
-                <li class="list-item" data-category-slug="toys">Toys</li>
-                <li class="list-item" data-category-slug="business-industrial">Business & Industrial</li>
-                <li class="list-item" data-category-slug="collectables">Collectables</li>
-                <li class="list-item" data-category-slug="deals-sales">Deals & Sales</li>
-            </ul>        
-        </div>
-    </section>
-    
-    <!-- Spotlight Section -->
     <section id="spotlight">
-        <div class="wrapper">
-            <div class='spotlight'>
-                <div class='spotlight-content'>
-                    <div class='spotlight-image'>
-                        <img src="{% static 'images/spotlight-bg' %}.png" alt="Spotlight" />
-                    </div>
-                    <span class='spotlight-heading'>
-                        <h1 class='spotlight-text'>Long weekend <br />adventures await</h1>
-                        <h2 class='spotlight-semitext'>Get yourself prepped & your ride ready to hit the road.</h2>
-                        <a href="#" class="spotlight-button">Shop now</a>
-                    </span>
+        <section id="navbar_bot">
+            <div class="wrapper">
+                <div class="hamburger" id="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="list" id="saved-list">
+                    <li class="list-item close-btn" id="close-btn">✖</li>
+                    <li class="list-item one" id="home"><a href="{% url 'web:index' %}" id="home">Home</a></li>
+                    <li class="list-item two" id="counter">
+                        <i class="fa fa-heart" aria-hidden="true"></i>
+                        <span id="saved-counter">0</span>
+                        <a href="{% url 'web:saved_items' %}">Saved</a>
+                    </li>
+                    <li class="list-item" data-category-slug="electronics">Electronics</li>
+                    <li class="list-item" data-category-slug="motors">Motors</li>
+                    <li class="list-item" data-category-slug="home-garden">Home & Garden</li>
+                    <li class="list-item" data-category-slug="clothing-accessories">Clothing & Accessories</li>
+                    <li class="list-item" data-category-slug="sports">Sports</li>
+                    <li class="list-item" data-category-slug="health-beauty">Health & Beauty</li>
+                    <li class="list-item" data-category-slug="toys">Toys</li>
+                    <li class="list-item" data-category-slug="business-industrial">Business & Industrial</li>
+                    <li class="list-item" data-category-slug="collectables">Collectables</li>
+                    <li class="list-item" data-category-slug="deals-sales">Deals & Sales</li>
+                </ul>   
+                
+                {% if query %}
+                <h2>Search Results for "{{ query }}"</h2>
+                <div class="recent_row">
+                    {% for product in products %}
+                        <div>
+                            <div class="img_cont">
+                                <div class="image">
+                                    <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+                                </div>
+                                <span class="heart" id="heart-{{ product.id }}" data-product-id="{{ product.id }}"
+                                onclick="toggleItem(this)">
+                                    <i class="fa {% if product.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
+                                    aria-hidden="true"
+                                    style="{% if product.id in saved_item_ids %}color: red;{% endif %}"></i>
+                                </span>
+                            </div> 
+                            <div class="text_cont">
+                                <h4><a href="{% url 'web:details' product.id %}" class="image-text">{{ product.name }}</a></h4>
+                                <h5 class="image-price">AU ${{product.price}}</h5>
+                            </div>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
-        </div>
+        </section>
+        {% else %}
+            <!-- Spotlight Section -->
+            <section id="spotlight2">
+                <div class="wrapper">
+                    <div class='spotlight'>
+                        <div class='spotlight-content'>
+                            <div class='spotlight-image'>
+                                <img src="{% static 'images/spotlight-bg' %}.png" alt="Spotlight" />
+                            </div>
+                            <span class='spotlight-heading'>
+                                <h1 class='spotlight-text'>Long weekend <br />adventures await</h1>
+                                <h2 class='spotlight-semitext'>Get yourself prepped & your ride ready to hit the road.</h2>
+                                <a href="#" class="spotlight-button">Shop now</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
     </section>
+
+    <section id="category">
+        <section class="wrapper">
+            <div class="text"></div>
+            <div id="category-items">
+    
+            </div>
+        </section>
+    </section>
+
+    {% if not query %}
+    {% if not category_slug %}
 
 <!-- Recently Viewed -->
     <section id="recent">
@@ -59,72 +98,23 @@
                 <p><a href="#">See all</a></p>
             </div>
             <div class="recent_bot">
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
+                {% for recent in recents %}
+                    <div class="recent_row">
+                        <div class="img_cont">
+                            <div class="image">
+                                <img src="{{ recent.image.url }}" alt="{{recent.name}}" />
+                            </div>
+                            <span class="heart" id="heart-{{ recent.id }}" data-product-id="{{ recent.id }}" onclick="toggleItem(this)">
+                                <i class="fa {% if recent.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
+                                aria-hidden="true" style="{% if recent.id in saved_item_ids %}color: red;{% endif %}"></i>
+                            </span>
+                        </div> 
+                        <div class="text_cont">
+                            <h4><a href="{% url 'web:details' recent.id %}" class="image-text">{{recent.name}}</a></h4>
+                            <h5>AU ${{ recent.price }}</h5>
                         </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
                     </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
+                {% endfor %}  
             </div>
         </div>
     </section>
@@ -137,72 +127,22 @@
                 <p><a href="#">See all</a></p>
             </div>
             <div class="recent_bot">
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
+                {% for pick in picks %}
+                    <div class="recent_row">
+                        <div class="img_cont">
+                            <div class="image">
+                                <img src="{{ pick.image.url }}" alt="{{ pick.name }}" />
+                                <span class="heart" id="heart-{{pick.id}}" data-product-id="{{ pick.id }}" onclick="toggleItem(this)">
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div> 
+                        <div class="text_cont">
+                            <h4><a href="{% url 'web:details' pick.id %}" class="image-text">{{ pick.name }}</a></h4>
+                            <h5>AU ${{ pick.price }}</h5>
                         </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
                     </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
@@ -215,74 +155,25 @@
                 <p><a href="#">See all</a></p>
             </div>
             <div class="recent_bot">
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
+                {% for watch in watches %}
+                    <div class="recent_row">
+                        <div class="img_cont">
+                            <div class="image">
+                                <img src="{{watch.image.url}}" alt="{{watch.name}}" />
+                                <span class="heart" id="heart-{{watch.id}}" data-product-id="{{ watch.id }}"
+                                onclick="toggleItem(this)"><i class="fa fa-heart-o" aria-hidden="true"></i></span>
+                            </div>
+                        </div> 
+                        <div class="text_cont">
+                            <h4><a href="{% url 'web:details' watch.id %}" class="image-text">{{watch.name}}</a></h4>
+                            <h5>AU ${{watch.price}}</h5>
                         </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
                     </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
-                <div class="recent_row">
-                    <div class="img_cont">
-                        <div class="image">
-                            <img src="{% static 'images/product-1.jpg'%}" alt="" />
-                        </div>
-                    </div> 
-                    <div class="text_cont">
-                        <h4><a href="#">Ultimate Samsung Portable Bluetooth Speaker</a></h4>
-                        <h5>AU $59.00</h5>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
+    {% endif %}
 
+    {% endif %}    
 {% endblock %}

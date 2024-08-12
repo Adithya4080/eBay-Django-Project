@@ -212,44 +212,41 @@ a{
 }
 
 /* navbar bottom */
-#navbar_bot{
+#spotlight{
     background-color: #f9fafb;
     padding: 20px 0px;
 }
-#navbar_bot ul{
+#spotlight ul{
     display: flex;
     justify-content: space-evenly;
 }
-#navbar_bot ul .close-btn{
+#spotlight ul .close-btn{
     display: none;
 }
-#navbar_bot ul li{
+#spotlight ul li{
     font-size: 14px;
     color: #5f5f5f;
     font-weight: 600;
     cursor: pointer;
 }
-#navbar_bot ul li a {
+#spotlight ul li a {
     color: #5f5f5f;
 }
 
 /* Spotlight Section */
-#spotlight2{
-    background-color: #f9fafb;
+#spotlight .spotlight {
+    padding: 20px 0px;
 }
-#spotlight2 .spotlight {
-    padding: 20px 0;
-}
-#spotlight2 .spotlight-content {
+#spotlight .spotlight-content {
     position: relative;
 }
 
-#spotlight2 .spotlight-image img {
+#spotlight .spotlight-image img {
     width: 100%;
     height: 350px;
 }
 
-#spotlight2 .spotlight-heading {
+#spotlight .spotlight-heading {
     position: absolute;
     color: #fff;
     top: 5rem;
@@ -257,17 +254,17 @@ a{
     font-weight: 600;
 }
 
-#spotlight2 .spotlight-text {
+#spotlight .spotlight-text {
     font-size: 30px;
 }
 
-#spotlight2 .spotlight-semitext {
+#spotlight .spotlight-semitext {
     font-size: 14px;
     font-weight: normal;
     margin: 16px 0;
 }
 
-#spotlight2 .spotlight-button {
+#spotlight .spotlight-button {
     padding: 8px 16px;
     font-size: 14px;
     font-weight: normal;
@@ -303,6 +300,7 @@ a{
 .recent_row .img_cont .image img{
     border-radius: 10px;
     width: 100%;
+    height: 250px;
     display: block;
 }
 .recent_row .text_cont h4{
@@ -365,7 +363,7 @@ a{
     display: flex;
     gap: 20px;
 }
-#footer-mini .mini-list .mini-item {
+#footer-mini .mini-list .mini-item a{
     color: #616161;
     font-size: 12px;
     font-weight: 400;
@@ -375,4 +373,448 @@ a{
 }
 .footer_right .footer-list:last-child{
     margin-bottom: 0px;
+}
+
+/* Singlee Page */
+
+#details .head {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 18px 0;
+}
+#details .search-back {
+    border: 1px solid #DBDBDB;
+    color: #1D4ED8;
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#details .search-back i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#details .head-text {
+    display: flex;
+    font-weight: 400;
+    font-size: 14px;
+}
+#details .text {
+    color: #494949;
+    font-size: 14px;
+}
+#details .content {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 20px;
+}
+#details .left {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 30%;
+}
+.image-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #DBDBDB;
+}
+.image-container .image {
+    width: 100%;
+    height: 410px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.image-container .image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+.image-container .image-arrows {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+.image-container .image-arrows i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #DBDBDB;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #1D4ED8;
+}
+#details .left .image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+#details .left .image-gallery .side-image {
+    flex: 1 1 calc(33.33% - 10px);
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#details .left .image-gallery .side-image img {
+    width: 100%;
+    height: 100px;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+#details .left .image-gallery .side-image img:hover {
+    transform: scale(1.05);
+}
+#details .middle {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 40%;
+}
+#details .middle .title {
+    font-size: 24px;
+    font-weight: 600;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DBDBDB;
+}
+#details .middle .availability {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #DBDBDB;
+}
+#details .middle .condition {
+    font-size: 12px;
+    font-weight: 400;
+}
+#details .middle .quantity {
+    display: flex;
+    gap: 12px;
+}
+#details .middle .quantity h6 {
+
+    font-size: 12px;
+    font-weight: 400;
+}
+#details .middle .quantity .quantity-button {
+    padding: 3px 10px;
+    border: none;
+    background-color: rgb(70, 70, 231);
+    cursor: pointer;
+}
+#details .middle .quantity .number {
+    border: 1px solid #DBDBDB;
+    padding: 5px 10px;
+}
+#details .middle .quantity .total {
+    color: red;
+}
+#details .middle .price {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 14px;
+}
+#details .middle .price strong {
+    font-size: 24px;
+}
+#details .middle .button {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+#details .middle .button button{
+    cursor: pointer;
+}
+#details .middle .button .buy {
+    padding: 8px 50px;
+    border-radius: 100px;
+    background-color: #1D4ED8;
+    color: #fff;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+#details .middle .button .add-item {
+    display: flex;
+}
+#details .middle .button .add-item button {
+    padding: 8px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    background: none;
+    color: #1D4ED8;
+    border: 1px solid #B8C0CC
+}
+#details .middle .button .add-item .cart{
+    background-color: #E8EDFB;
+    border: none;
+    margin-right: 6px;
+}
+#details .middle .button .add-item .wishlist i {
+    font-size: 12px;
+}
+#details .middle .service {
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#details .middle .service .check {
+
+    display: flex;
+}
+#details .middle .service .checkbox {
+    color: #000;
+    font-size: 12px;
+    white-space: nowrap;
+
+}
+#details .middle .service .agreement {
+    color: #5F5F5F;
+    font-size: 12px;
+    font-weight: 400;
+    text-decoration: underline;
+    margin-bottom: 20px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#details .middle .card {
+    padding: 24px 16px;
+    background-color: #f0ebeb;
+    border-radius: 20px;
+}
+#details .middle .delivery {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #DBDBDB;
+}
+#details .middle .delivery h6 {
+    font-weight: 400;
+    line-height: 16px;
+}
+#details .middle .return {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+}
+#details .middle .return h6 {
+    font-weight: 400;
+}
+#details .middle .return a {
+    color: #000;
+    text-decoration: underline;
+}
+#details .middle .payment {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+#details .middle .payment .pay-methods {
+    width: 40px;
+}
+#details .right {
+    width: 30%;
+}
+#details .right .card-img {
+    width: 100%;
+}
+#details .right .card-img img {
+    width: 100%;
+}
+.list-item.saved-item {
+    color: red;
+    font-weight: bold;
+}
+.list-item a {
+    color: #616161;
+}
+#counter {
+    position: relative;
+}
+#saved-counter {
+    border-radius: 100px;
+    padding: 2px;
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+}
+#specifics {
+    padding: 30px 0;
+}
+#specifics .specific-container {
+    border: 1px solid #616161;
+    border-radius: 20px;
+}
+#specifics .specific-content {
+    font-size: 14px;
+    font-weight: 600;
+    color: #616161;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#specifics .top {
+    display: flex;
+    font-size: 14px;
+    border-bottom: 1px solid #616161;
+    background-color: #F9FAFB;
+    border-radius: 20px 20px 0 0;
+}
+#specifics .top h6 {
+    font-size: 14px;
+    font-weight: 600;
+}
+#specifics .top-item {
+    color: #1D4ED8;
+    padding: 10px 24px;
+    border-right: 1px solid #616161;
+    background-color: #fff;
+    border-radius: 20px 0 0 0;
+}
+#specifics .top-payment {
+    padding: 10px 24px;
+}
+#specifics .item-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 24px;
+}
+#specifics .item-content h5{
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+}
+#specifics .item-content h6 {
+    font-size: 14px;
+    font-weight: 600;
+}
+#specifics .item-specifics {
+    padding: 10px 24px;
+}
+#specifics .item-specifics h5 {
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 10px;
+}
+#specifics .item-specifics ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+#specifics .item-specifics ul li {
+    font-size: 14px;
+    display: flex;
+    gap: 10rem;
+    font-weight: 400;
+}
+#specifics .item-specifics ul li span {
+    color: #000;
+}
+#specifics .item-specifics ul li .key {
+    width: 20%;
+}
+#specifics .item-specifics ul li .value {
+    width: 20%;
+    font-weight: 600;
+}
+#content-card {
+    padding: 20px 0px;
+}
+#content-card .card-content{
+    background-color: #F6F6F6;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#content-card .card-content .cont-right{
+    display: flex;
+    gap: 20px;
+}
+#content-card .card-content .cont-right .cont-img{
+    width: 30%;
+}
+#content-card .card-content .cont-right .cont-img img{
+    width: 100%;
+    display: block;
+}
+#content-card .card-content .cont-right h3{
+    text-decoration: underline;
+    text-underline-offset: 8px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+#content-card .card-content .cont-right p{
+    font-size: 14px;
+    margin-bottom: 2px;
+}
+#content-card .card-content .cont-right p:last-child{
+    margin-bottom: 0px;
+}
+#content-card .card-content .card-left{
+    display: flex;
+    flex-direction: column;
+    column-gap: 20px;
+}
+#content-card .card-content .card-left button{
+    padding: 5px 80px;
+    border: 1px solid #9E9E9E;
+    background: none;
+    color: black;
+    cursor: pointer;
+    border-radius: 40px;
+}
+#content-card .card-content .card-left .btn1{
+    background-color: #1D4ED8;
+    color: white;
+    margin-bottom: 8px;
+    border: none;
+}
+/* saved items */
+#saved-items .bg-content {
+    padding: 20px 0px;
+}
+#saved-items .item-content-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+}
+#spotlight .item-content-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+}
+.list-item.active {
+    color: #1D4ED8;
+    background-color: #E8EDFB;
 }

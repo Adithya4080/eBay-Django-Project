@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<section id="saved-items">
+    <section class="bg-content">
+        <section class="wrapper">
+            <div class="recent-container">
+                <h3 class="text">Your Saved Items</h3>
+            </div>
+            <div class="item-content-grid" id="saved-items-list">
+                {% for saved_item in saved_items %}
+                <div class="item" id="saved-item-{{ saved_item.product.id }}">
+                    <div class="image-content">
+                        <div class="image">
+                            <img src="{{ saved_item.product.image.url }}" alt="{{ saved_item.product.name }}">
+                        </div>
+                        <span class="heart" id="heart-{{ saved_item.product.id }}"
+                            data-product-id="{{ saved_item.product.id }}" onclick="toggleItem(this)">
+                            <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+                        </span>
+                    </div>
+                    <span class="text-content">
+                        <a href="{% url 'web:details' saved_item.product.id %}"
+                            class="image-text">{{saved_item.product.name }}<br />
+                        </a>
+                        <span class="image-price">AU ${{ saved_item.product.price }}</span>
+                    </span>
+                </div>
+                {% empty %}
+                <div>No saved items yet.</div>
+                {% endfor %}
+            </div>
+        </section>
+    </section>
+</section>
+
+{% endblock %}

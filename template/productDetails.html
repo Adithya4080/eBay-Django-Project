@@ -3,4 +3,224 @@
 
 {% block content %}
 
+<section id="details">
+    <section class="wrapper">
+        <div class="head">
+            <span class="search-back">
+                <a href="{% url 'web:index' %}"><i class="fa fa-angle-left" aria-hidden="true"></i></a></span>
+            <h6 class="head-text">
+                <a href="{% url 'web:index' %}" class="search-text">Back to search results</a>
+                <span class="text">
+                    / Listed in category:
+                    {% for category in categories %}
+                    {{ category.name }}{% if not forloop.last %} /{% endif %}
+                    {% endfor %}
+                </span>
+            </h6>
+        </div>
+        <div class="content">
+            <div class="left">
+                <div class="image-container">
+                    <div class="image">
+                        <img id="mainImage" src="{{ product.image.url }}" alt="{{ product.name }}" />
+                    </div>
+                    <span class="image-arrows">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="image-gallery">
+                    {% for gallery_image in gallery_images %}
+                    <div class="side-image">
+                        <img src="{{ gallery_image.image.url }}" alt="{{ gallery_image.id }}"
+                            onclick="showImage('{{ gallery_image.image.url }}')" />
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="middle">
+                <h3 class="title">{{ product.name }}</h3>
+                <div class="availability">
+                    <span class="condition">Condition: <strong>Brand New</strong></span>
+                    <span class="quantity" >
+                        <h6>Quantity: 
+                            <button class="quantity-button" id="decrease">-</button>
+                            <span class="number" id="quantity">1</span>
+                            <button class="quantity-button" id="increase">+</button>
+                        </h6>
+                        <h6><span id="available_stock">{{ available_stock }}</span> available / <span class="total">{{product.stock}} sold</span></h6>
+                    </span>
+                </div>
+                <div>
+                    <span class="price">Price:
+                        <strong id="price" data-price="{{product.price}}">AU ${{product.price}}</strong>
+                        Buy now,pay later available
+                    </span>
+                    <div class="button">
+                        <span>
+                            <button class="buy">Buy It Now</button>
+                        </span>
+                        <span class="add-item">
+                            <button class="cart">Add to cart</button>
+                            <button class="wishlist">Add to Watchlist <i class="fa fa-angle-down"></i></button>
+                        </span>
+                    </div>
+                    <div class="service">
+                        <h6>Additional service available</h6>
+                        <span class="check">
+                            <input type="checkbox" />
+                            <a href="" class="checkbox">Protection For Consoles and Other Items from
+                                XCover.com-<strong>AU $69.89</strong>
+                            </a>
+                        </span>
+                        <a href="" class="agreement">I have read and agreed to the policy terms. The policy is provided
+                            by XCover.com and underwritten<br />
+                            by Pacific International Insurance Pty Ltd.[1]</a>
+                    </div>
+                    <div class="card">
+                        <div class="delivery">
+                            <h6>Collection: Click & Collect - Select store at checkout.</h6>
+                            <h6>Postage: <strong>Free</strong> Standard Parcel Delivery - Located in: Eltham, VIC,
+                                Australia</h6>
+                            <h6>Delivery: Estimated between <strong>Tue, 12 Mar</strong>and <strong>Fri, 15 Mar</strong>
+                                to 3000</h6>
+                        </div>
+                        <div class="return">
+                            <h6>Returns: 30-day returns. Buyer pays for return postage. <a href="">See Details</a></h6>
+                            <div class="payment">Payment:
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 25.png" alt="1" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 26.png" alt="2" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 27.png" alt="3" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 28.png" alt="4" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 29.png" alt="5" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 30.png" alt="6" />
+                                </span>
+                                <span class="pay-methods">
+                                    <img src="/static/images/image 31.png" alt="7" />
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <span class="card-img">
+                    <img src="/static/images/card.png" alt="">
+                </span>
+            </div>
+        </div>
+    </section>
+</section>
+
+<section id="recent">
+    <div class="wrapper">
+        <div class="recent-top">
+            <h3 class="text">Similar sponsored items</h3>
+            <h5 class="seeAll">See All</h5>
+        </div>
+        <div class="recent_bot">
+            {% for similar_product in similar_products %}
+                <div class="recent_row">
+                    <div class="img_cont">
+                        <div class="image">
+                            <img src="{{ similar_product.image.url }}" alt="{{ similar_product.name }}">
+                        </div>
+                        <span class="heart" id="heart-{{ similar_product.id }}" data-product-id="{{ similar_product.id }}"
+                        onclick="toggleItem(this)">
+                        <i class="fa {% if similar_product.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
+                            aria-hidden="true"style="{% if similar_product.id in saved_item_ids %}color: red;{% endif %}"></i>
+                        </span>
+                    </div>
+                    <div class="text-cont">
+                        <h4><a href="{% url 'web:details' similar_product.id %}" class="image-text">{{ similar_product.name }}<br />
+                        </a></h4>
+                        <h5>AU ${{ similar_product.price }}</h5>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section id="specifics">
+    <section class="wrapper">
+        <section class="specific-container">
+            <div class="specific-content">
+                <div class="top">
+                    <h6 class="top-item">About this item</h6>
+                    <h6 class="top-payment">Postage,returns and payments</h6>
+                </div>
+                <div class="item-content">
+                    <div>
+                        <h6>Seller assumes all responsibility for this listing.</h6>
+                        <h6>Last updated on 07 Mar, 2024 11:41:46 AEDST View all revision</h6>
+                    </div>
+                    <div>
+                        <h5>eBay item number: <b>166548593498</b></h5>
+                    </div>
+                </div>
+                <div class="item-specifics">
+                    <h5>Item specifics</h5>
+                    <ul>
+                        {% for specification in product.specifications.all %}
+                        <li><span class="key">{{ specification.key }}</span> 
+                            <span class="value">{{ specification.value }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+
+<section id="content-card">
+    <div class="wrapper">
+        <div class="card-content">
+            <div class="cont-right">
+                <div class="cont-img">
+                    <img src="{% static 'images/Ellipse 3.png' %}" alt="User">
+                </div>
+                <div>
+                    <h3>Tech_Galore (2.3k)</h3>
+                    <p><b>99.2%</b> positive feedback</p>
+                    <p><b>2.3K</b> items sold</p>
+                </div>
+            </div>
+            <div class="card-left">
+                <button class="btn1">Visit Store</button>
+                <button>Contact</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="footer-mini" class="wrapper">
+    <ul class="mini-list">
+        <li class="mini-item"><a href="#">Abour eBay</a></li>
+        <li class="mini-item"><a href="#">Announcement</a></li>
+        <li class="mini-item"><a href="#">Community</a></li>
+        <li class="mini-item"><a href="#">Media Centre</a></li>
+        <li class="mini-item"><a href="#">Seller Centre</a></li>
+        <li class="mini-item"><a href="#">Policies</a></li>
+        <li class="mini-item"><a href="#">Advetise</a></li>
+        <li class="mini-item"><a href="#">Help</a></li>
+        <li class="mini-item"><a href="#">Site Map</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block footer %}
+
 {% endblock %}

@@ -5,7 +5,6 @@
 
     <!-- navbar bottom -->
     <section id="spotlight">
-        <section id="navbar_bot">
             <div class="wrapper">
                 <div class="hamburger" id="hamburger-menu">
                     <span></span>
@@ -44,8 +43,7 @@
                                 <span class="heart" id="heart-{{ product.id }}" data-product-id="{{ product.id }}"
                                 onclick="toggleItem(this)">
                                     <i class="fa {% if product.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
-                                    aria-hidden="true"
-                                    style="{% if product.id in saved_item_ids %}color: red;{% endif %}"></i>
+                                    aria-hidden="true"style="{% if product.id in saved_item_ids %}color: red;{% endif %}"></i>
                                 </span>
                             </div> 
                             <div class="text_cont">
@@ -55,27 +53,22 @@
                         </div>
                     {% endfor %}
                 </div>
-            </div>
-        </section>
-        {% else %}
+                {% else %}
             <!-- Spotlight Section -->
-            <section id="spotlight2">
-                <div class="wrapper">
-                    <div class='spotlight'>
-                        <div class='spotlight-content'>
-                            <div class='spotlight-image'>
-                                <img src="{% static 'images/spotlight-bg' %}.png" alt="Spotlight" />
-                            </div>
-                            <span class='spotlight-heading'>
-                                <h1 class='spotlight-text'>Long weekend <br />adventures await</h1>
-                                <h2 class='spotlight-semitext'>Get yourself prepped & your ride ready to hit the road.</h2>
-                                <a href="#" class="spotlight-button">Shop now</a>
-                            </span>
+                <div class='spotlight'>
+                    <div class='spotlight-content'>
+                        <div class='spotlight-image'>
+                            <img src="{% static 'images/spotlight-bg' %}.png" alt="Spotlight" />
                         </div>
+                        <span class='spotlight-heading'>
+                            <h1 class='spotlight-text'>Long weekend <br />adventures await</h1>
+                            <h2 class='spotlight-semitext'>Get yourself prepped & your ride ready to hit the road.</h2>
+                            <a href="#" class="spotlight-button">Shop now</a>
+                        </span>
                     </div>
                 </div>
-            </section>
-        {% endif %}
+            {% endif %}
+        </div>
     </section>
 
     <section id="category">
@@ -106,7 +99,7 @@
                             </div>
                             <span class="heart" id="heart-{{ recent.id }}" data-product-id="{{ recent.id }}" onclick="toggleItem(this)">
                                 <i class="fa {% if recent.id in saved_item_ids %}fa-heart{% else %}fa-heart-o{% endif %}"
-                                aria-hidden="true" style="{% if recent.id in saved_item_ids %}color: red;{% endif %}"></i>
+                                aria-hidden="true"style="{% if recent.id in saved_item_ids %}color: red;{% endif %}"></i>
                             </span>
                         </div> 
                         <div class="text_cont">

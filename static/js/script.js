@@ -108,20 +108,26 @@
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
-                <div class="image">
-                    <img src="${item.image_url}" alt="${item.name}">
-                </div>
-                <span class="heart" data-product-id="${item.id}" onclick="toggleItem(this)">
-                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                </span>
-                <div class="text-content">
-                    <a href="/product/${item.id}/" class="image-text">${item.name}</a><br>
-                    <span class="image-price">AU $${item.price}</span>
-                </div>
-            `;
+                    <div class="recent_bot">
+                        <div class="recent_row">
+                            <div class="img_cont">
+                                <div class="image">
+                                    <img src="${item.image_url}" alt="${item.name}">
+                                </div>
+                                <span class="heart" data-product-id="${item.id}" onclick="toggleItem(this)">
+                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                            <div class="text-cont">
+                                <h4><a href="/product/${item.id}/" class="image-text">${item.name}</a></h4>
+                                <h5 class="image-price">AU $${item.price}</h5>
+                            </div>
+                        </div>
+                    </div>
+                `;
                 categoryItemsContainer.appendChild(itemDiv);
             });
-
+            
             categorySection.style.display = 'block';
         }
 

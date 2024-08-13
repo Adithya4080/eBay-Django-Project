@@ -74,7 +74,7 @@
                         <div class='search'>
                             <span class='search-all' id="category-selector" onclick="toggleDropdown()">All
                                 <i class="fa fa-angle-down"></i>
-                                <span class="dropdown">
+                                <div class="dropdown">
                                     <ul class="dropdown-list">
                                         <li class="dropdown-item active" data-category="all">All</li>
                                         <li class="dropdown-item" data-category="electronics">Electronics</li>
@@ -88,7 +88,7 @@
                                         <li class="dropdown-item" data-category="collectables">Collectables</li>
                                         <li class="dropdown-item" data-category="deals-sales">Deals & Sales</li>
                                     </ul>
-                                </span>
+                                </div>
                             </span>
                             <div class='search-bar'>
                                 <span class='search-icon'>
@@ -101,7 +101,54 @@
                         <button type="button" class="search-button" onclick="performSearch()">Search</button>
                     </div>
                     <div class='search-link'>
-                        <a href="">Advanced</a>
+                        <a href="#">Advanced</a>
+                    </div>
+                    <div class="hamburger" id="hamburger-menu">
+                        <span class="bars"></span>
+                        <span class="bars"></span>
+                        <span class="bars"></span>
+                    </div>
+                    <div id="mobile-menu">
+                        <div class="top_right">
+                            <ul>
+                                <li>
+                                    <div class="user" >
+                                        <img src="{% static 'images/user.jpg' %}" alt="User" />
+                                        <i class="fa fa-angle-down"></i>
+                                    </div>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                    <div class="icon">
+                                        <img src="{% static 'images/Bell.svg' %}" alt="Notification Icon" />
+                                    </div></a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                    <div class="cart">
+                                        <img src="{% static 'images/Cart.svg' %}" alt="Cart Icon" />
+                                    </div></a>
+                                </li>
+                            </ul>
+                            <ul class="list" id="saved-list spotligght-list">
+                                <li class="list-item one" id="home"><a href="{% url 'web:index' %}" id="home">Home</a></li>
+                                <li class="list-item two" id="counter">
+                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                    <span id="saved-counter">0</span>
+                                    <a href="{% url 'web:saved_items' %}">Saved</a>
+                                </li>
+                                <li class="list-item" data-category-slug="electronics"><a href="#">Electronics</a></li>
+                                <li class="list-item" data-category-slug="motors"><a href="#">Motors</a></li>
+                                <li class="list-item" data-category-slug="home-garden"><a href="#">Home & Garden</a></li>
+                                <li class="list-item" data-category-slug="clothing-accessories"><a href="#">Clothing & Accessories</a></li>
+                                <li class="list-item" data-category-slug="sports"><a href="#">Sports</a></li>
+                                <li class="list-item" data-category-slug="health-beauty"><a href="#">Health & Beauty</a></li>
+                                <li class="list-item" data-category-slug="toys"><a href="#">Toys</a></li>
+                                <li class="list-item" data-category-slug="business-industrial"><a href="#">Business & Industrial</a></li>
+                                <li class="list-item" data-category-slug="collectables"><a href="#">Collectables</a></li>
+                                <li class="list-item" data-category-slug="deals-sales"><a href="#">Deals & Sales</a></li>
+                            </ul>  
+                        </div>
                     </div>
                 </div>
     
@@ -113,7 +160,7 @@
     {% block content %}
 
     {% endblock %}
-    
+     
     <!-- footer Section -->
     <section id="footer">
         <div class="wrapper">

@@ -100,6 +100,7 @@
             document.getElementById('recent').style.display = 'none';
             document.getElementById('picked').style.display = 'none';
             document.getElementById('watched').style.display = 'none';
+            document.getElementById('spotlight2').style.display = 'none';
 
             categoryTitle.textContent = `Category: ${categoryName}`;
             categoryItemsContainer.innerHTML = '';
@@ -108,19 +109,21 @@
                 const itemDiv = document.createElement('div');
                 itemDiv.classList.add('item');
                 itemDiv.innerHTML = `
-                    <div class="recent_bot">
-                        <div class="recent_row">
-                            <div class="img_cont">
-                                <div class="image">
-                                    <img src="${item.image_url}" alt="${item.name}">
+                    <div>
+                        <div class="recent_bot">
+                            <div class="recent_row">
+                                <div class="img_cont">
+                                    <div class="image">
+                                        <img src="${item.image_url}" alt="${item.name}">
+                                    </div>
+                                    <span class="heart" data-product-id="${item.id}" onclick="toggleItem(this)">
+                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
+                                    </span>
                                 </div>
-                                <span class="heart" data-product-id="${item.id}" onclick="toggleItem(this)">
-                                    <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                            <div class="text-cont">
-                                <h4><a href="/product/${item.id}/" class="image-text">${item.name}</a></h4>
-                                <h5 class="image-price">AU $${item.price}</h5>
+                                <div class="text_cont">
+                                    <h4><a href="/product/${item.id}/" class="image-text">${item.name}</a></h4>
+                                    <h5 class="image-price">AU $${item.price}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -174,8 +177,6 @@
     });
     
     document.querySelector('.search-icon').addEventListener('click', performSearch);
-
-
 
 
     //image onclick...
@@ -251,15 +252,27 @@
         }
     });
 
-document.addEventListener("DOMContentLoaded", function() {
-    const hamburger = document.getElementById("hamburger-menu");
-    const savedList = document.getElementById("saved-list");
-    const closeBtn = document.getElementById("close-btn");
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+    
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
+            if (mobileMenu.style.display === 'block') {
+                mobileMenu.style.display = 'none';
+            } else {
+                mobileMenu.style.display = 'block';
+            }
+        });
 
-    hamburger.addEventListener("click", function() {
-        savedList.style.display = savedList.style.display === "flex" ? "none" : "flex";
+        document.addEventListener('click', function (event) {
+            if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.style.display = 'none';
+                hamburger.classList.remove('active');
+            }
+        });
     });
-    closeBtn.addEventListener("click", function() {
-        savedList.style.display = "none";
-    });
-});
+    
+    
+    
+    

@@ -6,11 +6,6 @@
     <!-- navbar bottom -->
     <section id="spotlight">
             <div class="wrapper">
-                <div class="hamburger" id="hamburger-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
                 <ul class="list" id="saved-list">
                     <li class="list-item close-btn" id="close-btn">✖</li>
                     <li class="list-item one" id="home"><a href="{% url 'web:index' %}" id="home">Home</a></li>
@@ -19,16 +14,16 @@
                         <span id="saved-counter">0</span>
                         <a href="{% url 'web:saved_items' %}">Saved</a>
                     </li>
-                    <li class="list-item" data-category-slug="electronics">Electronics</li>
-                    <li class="list-item" data-category-slug="motors">Motors</li>
-                    <li class="list-item" data-category-slug="home-garden">Home & Garden</li>
-                    <li class="list-item" data-category-slug="clothing-accessories">Clothing & Accessories</li>
-                    <li class="list-item" data-category-slug="sports">Sports</li>
-                    <li class="list-item" data-category-slug="health-beauty">Health & Beauty</li>
-                    <li class="list-item" data-category-slug="toys">Toys</li>
-                    <li class="list-item" data-category-slug="business-industrial">Business & Industrial</li>
-                    <li class="list-item" data-category-slug="collectables">Collectables</li>
-                    <li class="list-item" data-category-slug="deals-sales">Deals & Sales</li>
+                    <li class="list-item" data-category-slug="electronics"><a href="#">Electronics</a></li>
+                    <li class="list-item" data-category-slug="motors"><a href="#">Motors</a></li>
+                    <li class="list-item" data-category-slug="home-garden"><a href="#">Home & Garden</a></li>
+                    <li class="list-item" data-category-slug="clothing-accessories"><a href="#">Clothing & Accessories</a></li>
+                    <li class="list-item" data-category-slug="sports"><a href="#">Sports</a></li>
+                    <li class="list-item" data-category-slug="health-beauty"><a href="#">Health & Beauty</a></li>
+                    <li class="list-item" data-category-slug="toys"><a href="#">Toys</a></li>
+                    <li class="list-item" data-category-slug="business-industrial"><a href="#">Business & Industrial</a></li>
+                    <li class="list-item" data-category-slug="collectables"><a href="#">Collectables</a></li>
+                    <li class="list-item" data-category-slug="deals-sales"><a href="#">Deals & Sales</a></li>
                 </ul>   
                 
                 {% if query %}
@@ -55,7 +50,7 @@
                 </div>
                 {% else %}
             <!-- Spotlight Section -->
-                <div class='spotlight'>
+                <div class='spotlight' id="spotlight2">
                     <div class='spotlight-content'>
                         <div class='spotlight-image'>
                             <img src="{% static 'images/spotlight-bg' %}.png" alt="Spotlight" />

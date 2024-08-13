@@ -142,9 +142,8 @@
                             aria-hidden="true"style="{% if similar_product.id in saved_item_ids %}color: red;{% endif %}"></i>
                         </span>
                     </div>
-                    <div class="text-cont">
-                        <h4><a href="{% url 'web:details' similar_product.id %}" class="image-text">{{ similar_product.name }}<br />
-                        </a></h4>
+                    <div class="text_cont">
+                        <h4><a href="{% url 'web:details' similar_product.id %}" class="image-text">{{ similar_product.name }}</a></h4>
                         <h5>AU ${{ similar_product.price }}</h5>
                     </div>
                 </div>

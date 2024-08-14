@@ -41,39 +41,39 @@
             <div class="middle">
                 <h3 class="title">{{ product.name }}</h3>
                 <div class="availability">
-                    <span class="condition">Condition: <strong>Brand New</strong></span>
-                    <span class="quantity" >
+                    <div class="condition">Condition: <strong>Brand New</strong></div>
+                    <div class="quantity" >
                         <h6>Quantity: 
                             <button class="quantity-button" id="decrease">-</button>
                             <span class="number" id="quantity">1</span>
                             <button class="quantity-button" id="increase">+</button>
                         </h6>
                         <h6><span id="available_stock">{{ available_stock }}</span> available / <span class="total">{{product.stock}} sold</span></h6>
-                    </span>
+                    </div>
                 </div>
                 <div>
-                    <span class="price">Price:
+                    <div class="price">Price:
                         <strong id="price" data-price="{{product.price}}">AU ${{product.price}}</strong>
                         Buy now,pay later available
-                    </span>
+                    </div>
                     <div class="button">
-                        <span>
+                        <div>
                             <button class="buy">Buy It Now</button>
-                        </span>
-                        <span class="add-item">
+                        </div>
+                        <div class="add-item">
                             <button class="cart">Add to cart</button>
                             <button class="wishlist">Add to Watchlist <i class="fa fa-angle-down"></i></button>
-                        </span>
+                        </div>
                     </div>
                     <div class="service">
                         <h6>Additional service available</h6>
-                        <span class="check">
+                        <div class="check">
                             <input type="checkbox" />
-                            <a href="" class="checkbox">Protection For Consoles and Other Items from
-                                XCover.com-<strong>AU $69.89</strong>
+                            <a href="#" class="checkbox">Protection For Consoles and Other Items from
+                                XCover.com-<strong>AU ${{product.price}}</strong>
                             </a>
-                        </span>
-                        <a href="" class="agreement">I have read and agreed to the policy terms. The policy is provided
+                        </div>
+                        <a href="#" class="agreement">I have read and agreed to the policy terms. The policy is provided
                             by XCover.com and underwritten<br />
                             by Pacific International Insurance Pty Ltd.[1]</a>
                     </div>
@@ -125,9 +125,9 @@
 
 <section id="recent">
     <div class="wrapper">
-        <div class="recent-top">
+        <div class="recent_top">
             <h3 class="text">Similar sponsored items</h3>
-            <h5 class="seeAll">See All</h5>
+            <p class="seeAll"><a href="#">See All</a></p>
         </div>
         <div class="recent_bot">
             {% for similar_product in similar_products %}
@@ -205,19 +205,21 @@
     </div>
 </section>
 
-<div id="footer-mini" class="wrapper">
-    <ul class="mini-list">
-        <li class="mini-item"><a href="#">Abour eBay</a></li>
-        <li class="mini-item"><a href="#">Announcement</a></li>
-        <li class="mini-item"><a href="#">Community</a></li>
-        <li class="mini-item"><a href="#">Media Centre</a></li>
-        <li class="mini-item"><a href="#">Seller Centre</a></li>
-        <li class="mini-item"><a href="#">Policies</a></li>
-        <li class="mini-item"><a href="#">Advetise</a></li>
-        <li class="mini-item"><a href="#">Help</a></li>
-        <li class="mini-item"><a href="#">Site Map</a></li>
-    </ul>
-</div>
+<section id="footer-mini">
+    <div class="wrapper">
+        <ul class="mini-list">
+            <li class="mini-item"><a href="#">Abour eBay</a></li>
+            <li class="mini-item"><a href="#">Announcement</a></li>
+            <li class="mini-item"><a href="#">Community</a></li>
+            <li class="mini-item"><a href="#">Media Centre</a></li>
+            <li class="mini-item"><a href="#">Seller Centre</a></li>
+            <li class="mini-item"><a href="#">Policies</a></li>
+            <li class="mini-item"><a href="#">Advetise</a></li>
+            <li class="mini-item"><a href="#">Help</a></li>
+            <li class="mini-item"><a href="#">Site Map</a></li>
+        </ul>
+    </div>
+</section>
 {% endblock %}
 
 {% block footer %}

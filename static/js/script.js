@@ -105,27 +105,23 @@
             categoryTitle.textContent = `Category: ${categoryName}`;
             categoryItemsContainer.innerHTML = '';
 
+            categoryItemsContainer.className = 'recent_bot';
+
             items.forEach(item => {
                 const itemDiv = document.createElement('div');
-                itemDiv.classList.add('item');
+                itemDiv.classList.add('item', 'recent_row');
                 itemDiv.innerHTML = `
-                    <div>
-                        <div class="recent_bot">
-                            <div class="recent_row">
-                                <div class="img_cont">
-                                    <div class="image">
-                                        <img src="${item.image_url}" alt="${item.name}">
-                                    </div>
-                                    <span class="heart" data-product-id="${item.id}" onclick="toggleItem(this)">
-                                        <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                    </span>
-                                </div>
-                                <div class="text_cont">
-                                    <h4><a href="/product/${item.id}/" class="image-text">${item.name}</a></h4>
-                                    <h5 class="image-price">AU $${item.price}</h5>
-                                </div>
-                            </div>
+                    <div class="img_cont">
+                        <div class="image">
+                            <img src="${item.image_url}" alt="${item.name}">
                         </div>
+                        <span class="heart" data-product-id="${item.id}" onclick="toggleItem(this)">
+                            <i class="fa fa-heart-o" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <div class="text_cont">
+                        <h4><a href="/product/${item.id}/" class="image-text">${item.name}</a></h4>
+                        <h5 class="image-price">AU $${item.price}</h5>
                     </div>
                 `;
                 categoryItemsContainer.appendChild(itemDiv);
@@ -252,6 +248,8 @@
         }
     });
 
+
+    // Hamburger
     document.addEventListener('DOMContentLoaded', function () {
         const hamburger = document.getElementById('hamburger-menu');
         const mobileMenu = document.getElementById('mobile-menu');

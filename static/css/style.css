@@ -281,6 +281,24 @@ i {
     color: #1D4ED8;
     background-color: #E8EDFB;
 }
+.text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+    background-color: #f9fafb;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer; 
+}
+
+.text:hover {
+    background-color: #e0e0e0;  /* Change background on hover */
+    color: #000;                /* Change text color on hover */
+}
 
 /* recent section */
 #recent{

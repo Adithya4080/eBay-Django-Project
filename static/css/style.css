@@ -234,6 +234,24 @@ i {
 #spotlight ul li a{
     color: #494949;
 }
+#spotlight .list-item .fa-heart{
+    margin-right: 5px;
+    color: #494949;
+}
+#spotlight .list{
+    padding: 0px 50px;
+}
+#counter {
+    position: relative;
+}
+#saved-counter {
+    border-radius: 100px;
+    padding: 2px;
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    color: #494949;
+}
 /* Spotlight Section */
 #spotlight .spotlight {
     padding-top: 20px;
@@ -726,16 +744,6 @@ i {
 }
 .list-item a {
     color: #616161;
-}
-#counter {
-    position: relative;
-}
-#saved-counter {
-    border-radius: 100px;
-    padding: 2px;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
 }
 #specifics {
     padding: 30px 0px;

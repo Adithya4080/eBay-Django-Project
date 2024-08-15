@@ -236,7 +236,7 @@ i {
 }
 /* Spotlight Section */
 #spotlight .spotlight {
-    padding: 20px 0px;
+    padding-top: 20px;
 }
 #spotlight .spotlight-content {
     position: relative;
@@ -293,6 +293,7 @@ i {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
     cursor: pointer; 
+    display: none;
 }
 
 .text:hover {

@@ -103,6 +103,7 @@
             document.getElementById('spotlight2').style.display = 'none';
 
             categoryTitle.textContent = `Category: ${categoryName}`;
+            categoryTitle.style.display = 'block';
             categoryItemsContainer.innerHTML = '';
 
             categoryItemsContainer.className = 'recent_bot';

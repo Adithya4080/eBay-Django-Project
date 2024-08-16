@@ -672,6 +672,7 @@ i {
     font-size: 16px;
     font-weight: 400;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     gap: 10px;
 }
@@ -689,8 +690,6 @@ i {
     font-weight: 400;
     text-decoration: underline;
     margin-bottom: 20px;
-    white-space: nowrap;
-    overflow: hidden;
 }
 #details .middle .card {
     padding: 24px 16px;
@@ -1104,7 +1103,10 @@ i {
     }
     #mobile-menu{
     padding:  40px 100px;
-    }  
+    } 
+    .card{
+        display: none;
+    } 
 }
 @media (max-width: 480px) {
     #navBar .nav-item{
@@ -1112,6 +1114,33 @@ i {
     }
     #footer-mini .mini-list .mini-item a {
         font-size: 16px;
+    }
+    #details .middle .service{
+        display: none;
+    }
+    #details .middle .button {
+        display: flex;
+        flex-direction: column;
+    }
+    #details .middle .button .buy{
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    #details .middle .button .add-item{
+        width: 100%;
+        gap: 2%;
+    }
+    #details .middle .button .add-item .cart{
+        width: 48%;
+    }
+    #details .middle .button .add-item .wishlist{
+        width: 48%;
+    }
+    #specifics .item-specifics ul li {
+        font-size: 12px;
+        display: flex;
+        gap: 7rem;
+        font-weight: 400;
     }
 }
 @media (max-width: 360px) {
@@ -1123,6 +1152,21 @@ i {
     }
     #mobile-menu{
         padding:  40px 50px;
+    }
+    #details .middle .button .buy{
+        margin-bottom: 10px;
+    }
+    #details .middle .button .add-item{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    #details .middle .button .add-item .cart{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    #details .middle .button .add-item .wishlist{
+        width: 100%;
     }
 }
 

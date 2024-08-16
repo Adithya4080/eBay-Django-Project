@@ -270,6 +270,13 @@
                 hamburger.classList.remove('active');
             }
         });
+
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) {
+                mobileMenu.style.display = 'none';
+                hamburger.classList.remove('active');
+            }
+        });
     });
     
     

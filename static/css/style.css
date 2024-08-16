@@ -388,6 +388,12 @@ i {
     font-size: 16px;
     font-weight: 600;
 }
+#saved-items h3{
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    padding: 10px;
+}
 /* footer section */
 #footer .footer-container {
     display: flex;

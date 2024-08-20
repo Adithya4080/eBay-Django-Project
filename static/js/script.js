@@ -254,13 +254,20 @@
     document.addEventListener('DOMContentLoaded', function () {
         const hamburger = document.getElementById('hamburger-menu');
         const mobileMenu = document.getElementById('mobile-menu');
+        const body = document.body; 
+
+        function toggleBodyScroll(isDisabled) {
+            body.style.overflow = isDisabled ? 'hidden' : '';
+        }
     
         hamburger.addEventListener('click', function () {
             this.classList.toggle('active');
             if (mobileMenu.style.display === 'block') {
                 mobileMenu.style.display = 'none';
+                toggleBodyScroll(false);
             } else {
                 mobileMenu.style.display = 'block';
+                toggleBodyScroll(true);
             }
         });
 
@@ -268,6 +275,7 @@
             if (!hamburger.contains(event.target) && !mobileMenu.contains(event.target)) {
                 mobileMenu.style.display = 'none';
                 hamburger.classList.remove('active');
+                toggleBodyScroll(false);
             }
         });
 
@@ -275,6 +283,7 @@
             if (window.innerWidth > 768) {
                 mobileMenu.style.display = 'none';
                 hamburger.classList.remove('active');
+                toggleBodyScroll(false);
             }
         });
     });

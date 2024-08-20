@@ -42,10 +42,9 @@ i {
         url("/font/poppins/poppins-medium-webfont.woff") format("woff"),
 }
 
-.wrapper {
-    width: 90%;
+.wrapper{
+    width: 95%;
     margin: 0 auto;
-    max-width: 1280px;
 }
 
 .border {
@@ -202,6 +201,7 @@ i {
     color: #fff;
     border-radius: 4px;
     border: none;
+    cursor: pointer;
 }
 #navBar .search-link {
     flex: 0 1 auto;
@@ -221,35 +221,34 @@ i {
 }
 #spotlight ul{
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 14px; 
 }
 #spotlight ul .close-btn{
     display: none;
 }
 #spotlight ul li{
     font-size: 14px;
-    font-weight: 600; 
-    padding: 2px;   
+    font-weight: 600;
 }
 #spotlight ul li a{
     color: #494949;
+    white-space: nowrap;
 }
 #spotlight .list-item .fa-heart{
     margin-right: 5px;
     color: #494949;
 }
-#spotlight .list{
-    padding: 0px 50px;
-}
 #counter {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 #saved-counter {
     border-radius: 100px;
-    padding: 2px;
     position: absolute;
-    bottom: 12px;
-    left: 12px;
+    bottom: 10px;
+    left: 14px;
     color: #494949;
 }
 /* Spotlight Section */
@@ -315,8 +314,8 @@ i {
 }
 
 .text:hover {
-    background-color: #e0e0e0;  /* Change background on hover */
-    color: #000;                /* Change text color on hover */
+    background-color: #e0e0e0;
+    color: #000;                
 }
 
 /* recent section */
@@ -330,7 +329,7 @@ i {
 }
 #watched{
     background-color: #f9fafb;
-    padding: 20px 0px 10px 0px;
+    padding: 20px 0px 50px 0px;
 }
 .img_cont{
     position: relative;
@@ -341,9 +340,10 @@ i {
     top: 8px;
     right: 8px;
     background-color: #fff;
-    padding: 6px;
+    padding: 6px 10px;
     border-radius: 100%;
     font-size: 20px;
+    cursor: pointer;
 }
 .recent_top{
     display: flex;
@@ -353,6 +353,7 @@ i {
 .recent_top p a{
     color: #464646;
     font-size: 14px;
+    font-weight: 500;
     text-decoration: underline;
     text-underline-offset: 4px;
 }
@@ -360,7 +361,7 @@ i {
     margin-top: 20px;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    gap: 10px;
+    gap: 20px;
 }
 .recent_row .img_cont .image{
     width: 100%;
@@ -378,8 +379,8 @@ i {
     max-height: 2.4em;       
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 7px 0px 5px;
-
+    margin: 20px 0px 5px;
+    min-height: 2.4em;
 }
 .recent_row .text_cont h4 a{
     color: black;
@@ -445,6 +446,7 @@ i {
 #footer span {
     font-weight: normal;
     text-decoration: underline;
+    cursor: pointer;
 }
 #footer strong {
     text-decoration: none;
@@ -954,7 +956,9 @@ i {
     .recent_bot{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+    }
+    .recent_row:nth-last-child(-n+2) {
+        margin-top: 30px;
     }
     #details .left{
         width: 40%;
@@ -1020,6 +1024,9 @@ i {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
         margin-top: 20px;
+    }
+    .recent_row:nth-last-child(-n+3) {
+        margin-top: 30px;
     }
 }
 @media (max-width: 820px) {
@@ -1104,8 +1111,17 @@ i {
         gap: 10px;
         margin-top: 20px;
     }
+    .recent_row:nth-last-child(-n+4) {
+        margin-top: 30px;
+    }
     .copyright .copyright-text{
         max-width: 100%;
+    }
+    .recent_row .text_cont h4 {
+        font-size: 14px;
+    }
+    .recent_row .text_cont h5 {
+        font-size: 14px;
     }
     #mobile-menu{
     padding:  40px 100px;
@@ -1155,6 +1171,12 @@ i {
         grid-template-columns: repeat(1, 1fr);
         gap: 10px;
         margin-top: 20px;
+    }
+    .recent_row:nth-last-child(-n+5) {
+        margin-top: 20px;
+    }
+    .recent_row .text_cont h4{
+        min-height: 0em;
     }
     #mobile-menu{
         padding:  40px 50px;
